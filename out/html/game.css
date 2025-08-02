@@ -27,7 +27,7 @@
   
   /* Chat Bubble Colors */
   --narrator-bg: #e9ecef;
-  --narrator-text: #495057;
+  --narrator-text: #475569;
   --me-bg: #007bff;
   --me-text: #ffffff;
   --other-char-bg: #ffffff;
@@ -96,7 +96,7 @@
   --text-inverse: #212529;
   
   --narrator-bg: #34495e;
-  --narrator-text: #ecf0f1;
+  --narrator-text: #e2e8f0;
   --me-bg: #3498db;
   --me-text: #ffffff;
   --other-char-bg: #2c3e50;
@@ -414,10 +414,11 @@ body {
 
 .bubble-sender-name {
   font-size: var(--font-size-xs);
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: var(--space-xs);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  font-family: var(--font-family);
 }
 
 /* Character name colors */
@@ -447,7 +448,7 @@ body {
 
 /* Narration (center, neutral) */
 .bubble.na {
-  background: var(--accent-bg);
+  background: var(--narrator-bg);
   color: var(--narrator-text);
   text-align: center;
   margin: 0;
