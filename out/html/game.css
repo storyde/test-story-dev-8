@@ -153,6 +153,7 @@ body {
   padding: 0 var(--space-lg);
   height: 100%;
   max-width: 100%;
+  position: relative;
 }
 
 .header-left {
@@ -175,6 +176,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .game-title h1 {
@@ -183,6 +186,7 @@ body {
   color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.025em;
+  white-space: nowrap;
 }
 
 .header-btn {
@@ -281,11 +285,11 @@ body {
 
 /* Sidebar Hidden States */
 .sidebar-left.hidden {
-  transform: translateX(calc(-1 * (var(--sidebar-width) - var(--sidebar-peek))));
+  transform: translateX(-100%);
 }
 
 .sidebar-right.hidden {
-  transform: translateX(calc(var(--sidebar-width) - var(--sidebar-peek)));
+  transform: translateX(100%);
 }
 
 /* Dendry Content Styling */
@@ -329,11 +333,11 @@ body {
 }
 
 .chat-main.sidebar-left-hidden {
-  margin-left: var(--sidebar-peek);
+  margin-left: 0;
 }
 
 .chat-main.sidebar-right-hidden {
-  margin-right: var(--sidebar-peek);
+  margin-right: 0;
 }
 
 .chat-container {
@@ -389,7 +393,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--font-size-xs);
   order: 2;
   margin-left: var(--space-sm);
@@ -410,21 +414,45 @@ body {
 
 .bubble-sender-name {
   font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-weight: 500;
   margin-bottom: var(--space-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
+/* Character name colors */
+.bubble-sender-name.facilitator {
+  color: #2563eb; /* Blue */
+}
+
+.bubble-sender-name.librarian {
+  color: #7c3aed; /* Purple */
+}
+
+.bubble-sender-name.archivist {
+  color: #dc2626; /* Red */
+}
+
+.bubble-sender-name.scholar {
+  color: #059669; /* Green */
+}
+
+.bubble-sender-name.historian {
+  color: #d97706; /* Orange */
+}
+
+.bubble-sender-name.curator {
+  color: #be185d; /* Pink */
+}
+
 /* Narration (center, neutral) */
 .bubble.na {
-  background: var(--narrator-bg);
+  background: var(--accent-bg);
   color: var(--narrator-text);
   text-align: center;
   margin: 0;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   max-width: 85%;
   border-radius: var(--radius-xl);
 }
@@ -435,7 +463,7 @@ body {
   color: var(--me-text);
   text-align: left;
   border-top-right-radius: var(--radius-xs);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Other Character Bubbles */
@@ -725,15 +753,24 @@ blockquote.attribution {
 @media (max-width: 768px) {
   :root {
     --sidebar-width: 260px;
-    --sidebar-peek: 20px;
   }
   
   .header-content {
     padding: 0 var(--space-md);
   }
   
+  .game-title {
+    position: static;
+    transform: none;
+    flex: 1;
+    text-align: center;
+    margin: 0 var(--space-sm);
+  }
+  
   .game-title h1 {
     font-size: var(--font-size-md);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .content-wrapper {
@@ -800,11 +837,11 @@ blockquote.attribution {
 /* Desktop Adjustments */
 @media (min-width: 769px) {
   .chat-main.sidebar-left-hidden {
-    margin-left: var(--sidebar-peek);
+    margin-left: 0;
   }
   
   .chat-main.sidebar-right-hidden {
-    margin-right: var(--sidebar-peek);
+    margin-right: 0;
   }
 }
 

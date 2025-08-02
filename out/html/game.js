@@ -40,6 +40,9 @@
     // Initialize keyboard navigation
     initializeKeyboardNavigation();
     
+    // Initialize touch gestures for mobile
+    initializeTouchGestures();
+    
     // Handle initial responsive state
     handleResize();
     
@@ -197,6 +200,86 @@
     }
   }
 
+  function initializeTouchGestures() {
+    var startX = 0;
+    var startY = 0;
+    var currentX = 0;
+    var currentY = 0;
+    var isDragging = false;
+    var activeElement = null;
+    
+    function handleTouchStart(e) {
+      if (window.innerWidth > 768) return; // Only on mobile
+      
+      var touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      currentX = startX;
+      currentY = startY;
+      
+      // Check if touch started on a sidebar
+      var progressSidebar = document.getElementById('progress-sidebar');
+      var contextSidebar = document.getElementById('context-sidebar');
+      
+      if (progressSidebar.classList.contains('active') && startX < 260) {
+        activeElement = progressSidebar;
+        isDragging = true;
+      } else if (contextSidebar.classList.contains('active') && startX > window.innerWidth - 260) {
+        activeElement = contextSidebar;
+        isDragging = true;
+      }
+    }
+    
+    function handleTouchMove(e) {
+      if (!isDragging || !activeElement) return;
+      
+      e.preventDefault();
+      var touch = e.touches[0];
+      currentX = touch.clientX;
+      currentY = touch.clientY;
+      
+      var deltaX = currentX - startX;
+      var deltaY = Math.abs(currentY - startY);
+      
+      // Only process horizontal swipes
+      if (deltaY > 50) {
+        isDragging = false;
+        return;
+      }
+      
+      // Apply transform based on swipe direction
+      if (activeElement.id === 'progress-sidebar' && deltaX < -50) {
+        activeElement.style.transform = 'translateX(' + Math.min(0, deltaX) + 'px)';
+      } else if (activeElement.id === 'context-sidebar' && deltaX > 50) {
+        activeElement.style.transform = 'translateX(' + Math.max(0, deltaX) + 'px)';
+      }
+    }
+    
+    function handleTouchEnd(e) {
+      if (!isDragging || !activeElement) return;
+      
+      var deltaX = currentX - startX;
+      var threshold = 100;
+      
+      // Reset transform
+      activeElement.style.transform = '';
+      
+      // Close sidebar if swiped far enough
+      if ((activeElement.id === 'progress-sidebar' && deltaX < -threshold) ||
+          (activeElement.id === 'context-sidebar' && deltaX > threshold)) {
+        closeSidebars();
+      }
+      
+      isDragging = false;
+      activeElement = null;
+    }
+    
+    // Add touch event listeners
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+  }
+
   function toggleProgressSidebar() {
     var sidebar = document.getElementById('progress-sidebar');
     var overlay = document.getElementById('sidebar-overlay');
@@ -262,12 +345,12 @@
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIcon) themeIcon.className = 'fas fa-moon';
+      if (themeIcon) themeIcon.className = 'fas fa-sun';
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIcon) themeIcon.className = 'fas fa-sun';
+      if (themeIcon) themeIcon.className = 'fas fa-moon';
       currentTheme = 'light';
     }
     
@@ -283,12 +366,12 @@
     if (savedTheme === 'dark') {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIconElement) themeIconElement.className = 'fas fa-moon';
+      if (themeIconElement) themeIconElement.className = 'fas fa-sun';
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIconElement) themeIconElement.className = 'fas fa-sun';
+      if (themeIconElement) themeIconElement.className = 'fas fa-moon';
       currentTheme = 'light';
     }
   }
@@ -351,13 +434,14 @@
           // Other characters – profile image left, name in bubble
           const profileImg = profileImages[cls];
           const characterName = characterNames[cls];
+          const characterClass = cls.substring(1); // Remove 'c' prefix for class name
           return `
             <div class="chat-line">
               <span class="profile ${cls}">
                 <img src="${profileImg}" alt="${characterName}" />
               </span>
               <div class="bubble ${cls}">
-                <div class="bubble-sender-name">${characterName}</div>
+                <div class="bubble-sender-name ${characterClass}">${characterName}</div>
                 ${content}
               </div>
             </div>`;
