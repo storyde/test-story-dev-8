@@ -140,12 +140,12 @@
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      themeIcon.setAttribute('uk-icon', 'icon: moon; ratio: 1.2');
+      themeIcon.className = 'fas fa-moon';
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      themeIcon.setAttribute('uk-icon', 'icon: sun; ratio: 1.2');
+      themeIcon.className = 'fas fa-sun';
       currentTheme = 'light';
     }
     
@@ -157,16 +157,17 @@
     var savedTheme = localStorage.getItem('fullquest-theme') || 'light';
     var body = document.body;
     var themeIcon = document.querySelector('#theme-toggle span');
+    var themeIconElement = document.querySelector('#theme-toggle i');
     
     if (savedTheme === 'dark') {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      themeIcon.setAttribute('uk-icon', 'icon: moon; ratio: 1.2');
+      if (themeIconElement) themeIconElement.className = 'fas fa-moon';
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      themeIcon.setAttribute('uk-icon', 'icon: sun; ratio: 1.2');
+      if (themeIconElement) themeIconElement.className = 'fas fa-sun';
       currentTheme = 'light';
     }
   }

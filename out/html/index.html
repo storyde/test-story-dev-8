@@ -8,6 +8,9 @@
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
     
+    <!-- Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="game.css">
     
@@ -30,7 +33,7 @@
         <div class="header-content">
           <div class="header-left">
             <button id="progress-toggle" class="header-btn" aria-label="Toggle Progress" tabindex="0">
-              <span uk-icon="icon: list; ratio: 1.2"></span>
+              <i class="fas fa-chart-line"></i>
             </button>
             <div class="game-title">
               <h1>Full Quest</h1>
@@ -38,13 +41,13 @@
           </div>
           <div class="header-right">
             <button id="context-toggle" class="header-btn" aria-label="Toggle Context" tabindex="0">
-              <span uk-icon="icon: info; ratio: 1.2"></span>
+              <i class="fas fa-globe-americas"></i>
             </button>
             <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
-              <span uk-icon="icon: sun; ratio: 1.2"></span>
+              <i class="fas fa-sun"></i>
             </button>
             <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
-              <span uk-icon="icon: database; ratio: 1.2"></span>
+              <i class="fas fa-save"></i>
             </button>
           </div>
         </div>
@@ -57,7 +60,7 @@
         <aside id="progress-sidebar" class="sidebar sidebar-left">
           <div class="sidebar-header">
             <h3>
-              <span uk-icon="icon: check; ratio: 1.1"></span>
+              <i class="fas fa-tasks"></i>
               Status
             </h3>
           </div>
@@ -86,7 +89,7 @@
         <aside id="context-sidebar" class="sidebar sidebar-right">
           <div class="sidebar-header">
             <h3>
-              <span uk-icon="icon: world; ratio: 1.1"></span>
+              <i class="fas fa-compass"></i>
               Context
             </h3>
           </div>
@@ -109,7 +112,7 @@
         <div class="modal-header">
           <h2>Save & Load Game</h2>
           <button onclick="window.hideSaveSlots();" class="modal-close">
-            <span uk-icon="icon: close"></span>
+            <i class="fas fa-times"></i>
           </button>
         </div>
         <div class="modal-body">
