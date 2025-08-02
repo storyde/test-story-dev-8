@@ -286,12 +286,12 @@
   window.displayText = function(text) {
     const mapping = {
       'Me: ':          'me',
-      'Facilitator: ': 'fa',
-      'Librarian: ':   'li',
-      'Archivist: ':   'ar',
-      'Scholar: ':     'sc',
-      'Historian: ':   'hi',
-      'Curator: ':     'cu',
+      'Facilitator: ': 'cfa',
+      'Librarian: ':   'cli',
+      'Archivist: ':   'car',
+      'Scholar: ':     'csc',
+      'Historian: ':   'chi',
+      'Curator: ':     'ccu',
       'Narration: ':   'na'
     };
 

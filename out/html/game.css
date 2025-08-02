@@ -212,7 +212,6 @@ body {
   min-width: 44px;
   min-height: 44px;
   position: relative;
-  overflow: hidden;
 }
 
 .header-btn i {
@@ -266,7 +265,6 @@ body {
   width: 300px;
   height: calc(100vh - 60px);
   background: var(--sidebar-bg);
-  backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-color);
   transition: transform var(--transition-smooth);
   display: flex;
@@ -289,7 +287,6 @@ body {
   padding: var(--space-lg);
   border-bottom: 1px solid var(--border-color);
   background: var(--accent-bg);
-  backdrop-filter: blur(10px);
   text-align: center;
 }
 
@@ -415,7 +412,6 @@ body {
   font-family: var(--font-family);
   line-height: 1.5;
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(10px);
   transition: all var(--transition-fast);
   border: 1px solid var(--border-color);
   position: relative;
@@ -440,7 +436,6 @@ body {
 /* Narration (center, neutral) */
 .bubble.na {
   background: var(--narrator-bg);
-  backdrop-filter: blur(15px);
   border: 2px solid var(--narrator-border);
   color: var(--text-primary);
   text-align: center;
@@ -454,7 +449,6 @@ body {
 /* Player Bubble (right) */
 .bubble.me {
   background: var(--me-bg);
-  backdrop-filter: blur(15px);
   border: 1px solid var(--me-border);
   text-align: right;
   border-bottom-right-radius: var(--radius-sm);
@@ -471,59 +465,52 @@ body {
 }
 
 /* Character Bubbles with Enhanced Styling */
-.bubble.fa { 
+.bubble.cfa { 
   background: var(--facilitator-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--facilitator-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.fa { background: var(--facilitator-border); }
+.profile.cfa { background: var(--facilitator-border); }
 
-.bubble.li { 
+.bubble.cli { 
   background: var(--librarian-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--librarian-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.li { background: var(--librarian-border); }
+.profile.cli { background: var(--librarian-border); }
 
-.bubble.ar { 
+.bubble.car { 
   background: var(--archivist-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--archivist-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.ar { background: var(--archivist-border); }
+.profile.car { background: var(--archivist-border); }
 
-.bubble.sc { 
+.bubble.csc { 
   background: var(--scholar-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--scholar-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.sc { background: var(--scholar-border); }
+.profile.csc { background: var(--scholar-border); }
 
-.bubble.hi { 
+.bubble.chi { 
   background: var(--historian-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--historian-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.hi { background: var(--historian-border); }
+.profile.chi { background: var(--historian-border); }
 
-.bubble.cu { 
+.bubble.ccu { 
   background: var(--curator-bg); 
-  backdrop-filter: blur(15px);
   border: 1px solid var(--curator-border);
   border-bottom-left-radius: var(--radius-sm);
 }
-.profile.cu { background: var(--curator-border); }
+.profile.ccu { background: var(--curator-border); }
 
 /* Dendry Choices Styling with Enhanced Interactions */
 .choices-container {
   padding: var(--space-lg);
   background: var(--secondary-bg);
-  backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-color);
   box-shadow: var(--glass-shadow);
 }
@@ -539,10 +526,9 @@ ul.choices {
 }
 
 ul.choices li {
-  border: 2px solid var(--accent-blue);
+  border: 2px solid #4f46e5;
   background-color: var(--secondary-bg);
-  backdrop-filter: blur(15px);
-  color: var(--accent-blue);
+  color: #4f46e5;
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-lg);
   cursor: pointer;
@@ -556,7 +542,7 @@ ul.choices li {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.2);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -565,7 +551,7 @@ ul.choices li::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--accent-blue);
+  background: #6366f1;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-fast);
@@ -582,8 +568,8 @@ ul.choices li:focus {
   color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--shadow-medium);
-  border-color: var(--accent-blue);
-  background-color: var(--accent-blue);
+  border-color: #6366f1;
+  background-color: #6366f1;
   outline: none;
 }
 
@@ -653,7 +639,6 @@ blockquote {
   margin: 1em 2em;
   padding: var(--space-md);
   background: var(--accent-bg);
-  backdrop-filter: blur(10px);
   border-left: 4px solid var(--accent-blue);
   border-radius: var(--radius-sm);
   position: relative;
@@ -683,7 +668,6 @@ blockquote.attribution {
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition-medium);
-  backdrop-filter: blur(2px);
 }
 
 .sidebar-overlay.active {
@@ -706,7 +690,6 @@ blockquote.attribution {
 
 .modal-content {
   background: var(--secondary-bg);
-  backdrop-filter: blur(20px);
   border-radius: var(--radius-lg);
   box-shadow: var(--glass-shadow);
   max-width: 600px;
@@ -722,7 +705,6 @@ blockquote.attribution {
   align-items: center;
   padding: var(--space-lg);
   background: var(--header-bg);
-  backdrop-filter: blur(20px);
   color: var(--text-light);
   border-bottom: 1px solid var(--border-color);
 }
@@ -965,7 +947,6 @@ p.game-over {
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
   background-color: var(--secondary-bg);
-  backdrop-filter: blur(10px);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
@@ -1014,7 +995,6 @@ ul.choices li.selected {
   top: 80px;
   right: 20px;
   background-color: var(--secondary-bg);
-  backdrop-filter: blur(20px);
   color: var(--text-primary);
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-md);
