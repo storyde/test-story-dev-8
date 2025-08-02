@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Full Quest - An interactive story experience">
+    <meta name="theme-color" content="#1e293b">
     <title>Full Quest - storyde</title>
     
     <!-- UIKit CSS -->
@@ -34,6 +36,7 @@
           <div class="header-left">
             <button id="progress-toggle" class="header-btn" aria-label="Toggle Progress" tabindex="0">
               <i class="fas fa-chart-line"></i>
+              <span class="sr-only">Toggle Status Panel</span>
             </button>
             <div class="game-title">
               <h1>Full Quest</h1>
@@ -42,12 +45,15 @@
           <div class="header-right">
             <button id="context-toggle" class="header-btn" aria-label="Toggle Context" tabindex="0">
               <i class="fas fa-globe-americas"></i>
+              <span class="sr-only">Toggle Context Panel</span>
             </button>
             <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
               <i class="fas fa-sun"></i>
+              <span class="sr-only">Toggle Theme</span>
             </button>
             <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
               <i class="fas fa-save"></i>
+              <span class="sr-only">Save and Load Game</span>
             </button>
           </div>
         </div>
@@ -65,7 +71,7 @@
             </h3>
           </div>
           <div class="sidebar-content">
-            <div id="qualities">
+            <div id="qualities" role="region" aria-label="Game Status Information">
               <!-- Dendry status content will be populated here -->
             </div>
           </div>
@@ -73,14 +79,14 @@
 
         <!-- Chat Area -->
         <main class="chat-main">
-          <div id="chat-container" class="chat-container">
-            <div id="content" class="chat-messages">
+          <div id="chat-container" class="chat-container" role="log" aria-label="Game Story">
+            <div id="content" class="chat-messages" aria-live="polite">
               <!-- Dendry game content will be displayed here -->
             </div>
           </div>
 
           <!-- Choices Container -->
-          <div id="choices-container" class="choices-container" style="display: none;">
+          <div id="choices-container" class="choices-container" style="display: none;" role="region" aria-label="Available Choices">
             <!-- Dendry choices will be populated here -->
           </div>
         </main>
@@ -94,7 +100,7 @@
             </h3>
           </div>
           <div class="sidebar-content">
-            <div id="holtext">
+            <div id="holtext" role="region" aria-label="Game Context Information">
               <!-- Dendry context content will be populated here -->
             </div>
           </div>
@@ -107,79 +113,106 @@
     <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
     <!-- Save/Load Modal -->
-    <div id="save" class="modal-overlay" style="display: none;">
+    <div id="save" class="modal-overlay" style="display: none;" role="dialog" aria-labelledby="save-modal-title" aria-modal="true">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>Save & Load Game</h2>
-          <button onclick="window.hideSaveSlots();" class="modal-close">
+          <h2 id="save-modal-title">Save & Load Game</h2>
+          <button onclick="window.hideSaveSlots();" class="modal-close" aria-label="Close Save Dialog">
             <i class="fas fa-times"></i>
           </button>
         </div>
         <div class="modal-body">
-          <table id="saves_table" class="saves-table">
+          <table id="saves_table" class="saves-table" role="table" aria-label="Save Slots">
+            <thead>
+              <tr>
+                <th scope="col">Slot</th>
+                <th scope="col">Action</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Save Info</th>
+              </tr>
+            </thead>
+            <tbody>
             <tr>
-                <td>Auto-0</td>
+                <th scope="row">Auto-0</th>
                 <td><button class="save-button" id="save_button_a0">Save</button></td>
                 <td><button class="delete-button" id="delete_button_a0">Delete</button></td>
                 <td class="save_info" id="save_info_a0"></td>
             </tr>
             <tr>
-                <td>Auto-1</td>
+                <th scope="row">Auto-1</th>
                 <td><button class="save-button" id="save_button_a1">Save</button></td>
                 <td><button class="delete-button" id="delete_button_a1">Delete</button></td>
                 <td class="save_info" id="save_info_a1"></td>
             </tr>
             <tr>
-                <td>0</td>
+                <th scope="row">0</th>
                 <td><button class="save-button" id="save_button_0">Save</button></td>
                 <td><button class="delete-button" id="delete_button_0">Delete</button></td>
                 <td class="save_info" id="save_info_0"></td>
             </tr>
             <tr>
-                <td>1</td>
+                <th scope="row">1</th>
                 <td><button class="save-button" id="save_button_1">Save</button></td>
                 <td><button class="delete-button" id="delete_button_1">Delete</button></td>
                 <td class="save_info" id="save_info_1"></td>
             </tr>
             <tr>
-                <td>2</td>
+                <th scope="row">2</th>
                 <td><button class="save-button" id="save_button_2">Save</button></td>
                 <td><button class="delete-button" id="delete_button_2">Delete</button></td>
                 <td class="save_info" id="save_info_2"></td>
             </tr>
             <tr>
-                <td>3</td>
+                <th scope="row">3</th>
                 <td><button class="save-button" id="save_button_3">Save</button></td>
                 <td><button class="delete-button" id="delete_button_3">Delete</button></td>
                 <td class="save_info" id="save_info_3"></td>
             </tr>
             <tr>
-                <td>4</td>
+                <th scope="row">4</th>
                 <td><button class="save-button" id="save_button_4">Save</button></td>
                 <td><button class="delete-button" id="delete_button_4">Delete</button></td>
                 <td class="save_info" id="save_info_4"></td>
             </tr>
             <tr>
-                <td>5</td>
+                <th scope="row">5</th>
                 <td><button class="save-button" id="save_button_5">Save</button></td>
                 <td><button class="delete-button" id="delete_button_5">Delete</button></td>
                 <td class="save_info" id="save_info_5"></td>
             </tr>
             <tr>
-                <td>6</td>
+                <th scope="row">6</th>
                 <td><button class="save-button" id="save_button_6">Save</button></td>
                 <td><button class="delete-button" id="delete_button_6">Delete</button></td>
                 <td class="save_info" id="save_info_6"></td>
             </tr>
             <tr>
-                <td>7</td>
+                <th scope="row">7</th>
                 <td><button class="save-button" id="save_button_7">Save</button></td>
                 <td><button class="delete-button" id="delete_button_7">Delete</button></td>
                 <td class="save_info" id="save_info_7"></td>
             </tr>
+            </tbody>
           </table>
         </div>
       </div>
+    </div>
+
+    <!-- Screen Reader Only Content -->
+    <div class="sr-only">
+      <style>
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+      </style>
     </div>
 
   </body>

@@ -2,6 +2,7 @@
   var game;
   var ui;
   var currentTheme = 'light';
+  var loadingIndicator = null;
 
   var DateOptions = {
     hour: 'numeric',
@@ -42,11 +43,53 @@
     // Handle initial responsive state
     handleResize();
     
+    // Create loading indicator
+    createLoadingIndicator();
+    
     // Add scroll behavior for smooth chat scrolling
     var chatContainer = document.getElementById('chat-container');
     if (chatContainer) {
       chatContainer.style.scrollBehavior = 'smooth';
     }
+    
+    // Add choice selection feedback
+    addChoiceSelectionFeedback();
+  }
+
+  function createLoadingIndicator() {
+    loadingIndicator = document.createElement('div');
+    loadingIndicator.className = 'loading-indicator';
+    loadingIndicator.innerHTML = '<div class="loading-spinner"></div><span>Loading...</span>';
+    document.body.appendChild(loadingIndicator);
+  }
+
+  function showLoadingIndicator() {
+    if (loadingIndicator) {
+      loadingIndicator.classList.add('active');
+    }
+  }
+
+  function hideLoadingIndicator() {
+    if (loadingIndicator) {
+      loadingIndicator.classList.remove('active');
+    }
+  }
+
+  function addChoiceSelectionFeedback() {
+    // Add event delegation for choice clicks
+    document.addEventListener('click', function(e) {
+      var choiceItem = e.target.closest('ul.choices li');
+      if (choiceItem && !choiceItem.classList.contains('unavailable')) {
+        // Add selection feedback
+        choiceItem.classList.add('selected');
+        showLoadingIndicator();
+        
+        // Remove feedback after a short delay
+        setTimeout(function() {
+          choiceItem.classList.remove('selected');
+        }, 200);
+      }
+    });
   }
 
   function initializeKeyboardNavigation() {
@@ -59,12 +102,79 @@
           button.click();
         }
       });
+      
+      // Add ARIA labels for better accessibility
+      if (!button.getAttribute('aria-label')) {
+        var icon = button.querySelector('i');
+        if (icon) {
+          if (icon.classList.contains('fa-chart-line')) {
+            button.setAttribute('aria-label', 'Toggle Status Panel');
+          } else if (icon.classList.contains('fa-globe-americas')) {
+            button.setAttribute('aria-label', 'Toggle Context Panel');
+          } else if (icon.classList.contains('fa-sun') || icon.classList.contains('fa-moon')) {
+            button.setAttribute('aria-label', 'Toggle Theme');
+          } else if (icon.classList.contains('fa-save')) {
+            button.setAttribute('aria-label', 'Save and Load Game');
+          }
+        }
+      }
     });
 
     // Add escape key to close sidebars
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeSidebars();
+      }
+    });
+    
+    // Add keyboard navigation for choices
+    document.addEventListener('keydown', function(e) {
+      var choices = document.querySelectorAll('ul.choices li:not(.unavailable)');
+      if (choices.length === 0) return;
+      
+      var currentFocus = document.activeElement;
+      var currentIndex = Array.from(choices).indexOf(currentFocus);
+      
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        var nextIndex;
+        
+        if (currentIndex === -1) {
+          nextIndex = 0;
+        } else if (e.key === 'ArrowDown') {
+          nextIndex = (currentIndex + 1) % choices.length;
+        } else {
+          nextIndex = (currentIndex - 1 + choices.length) % choices.length;
+        }
+        
+        choices[nextIndex].focus();
+      }
+    });
+    
+    // Make choices focusable
+    document.addEventListener('DOMContentLoaded', function() {
+      updateChoiceAccessibility();
+    });
+  }
+
+  function updateChoiceAccessibility() {
+    var choices = document.querySelectorAll('ul.choices li');
+    choices.forEach(function(choice, index) {
+      if (!choice.classList.contains('unavailable')) {
+        choice.setAttribute('tabindex', '0');
+        choice.setAttribute('role', 'button');
+        choice.setAttribute('aria-label', 'Choice ' + (index + 1) + ': ' + choice.textContent.trim());
+        
+        // Add keyboard activation
+        choice.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            choice.click();
+          }
+        });
+      } else {
+        choice.setAttribute('tabindex', '-1');
+        choice.setAttribute('aria-disabled', 'true');
       }
     });
   }
@@ -254,6 +364,14 @@
       window.updateSidebar();
       window.updateRightSidebar();
       
+      // Hide loading indicator
+      hideLoadingIndicator();
+      
+      // Update choice accessibility
+      setTimeout(function() {
+        updateChoiceAccessibility();
+      }, 100);
+      
       // Add smooth scroll to bottom after content update
       setTimeout(function() {
         var chatContainer = document.getElementById('chat-container');
@@ -261,6 +379,12 @@
           chatContainer.scrollTop = chatContainer.scrollHeight;
         }
       }, 100);
+      
+      // Announce new content to screen readers
+      var newContent = document.getElementById('content');
+      if (newContent) {
+        newContent.setAttribute('aria-live', 'polite');
+      }
   };
 
   // TODO: change this!
@@ -280,10 +404,12 @@
       date = scene + '\n(' + date.toLocaleString(undefined, DateOptions) + ')';
       localStorage[TITLE+'_save_timestamp_' + slot] = date;
       window.populateSaveSlots(8, 2);
+      showNotification("Game saved successfully", "success");
   };
   
   // writes an autosave slot
   window.autosave = function() {
+      showLoadingIndicator();
       var oldData = localStorage[TITLE+'_save_' + 'a0'];
       if (oldData) {
           localStorage[TITLE+'_save_'+'a1'] = oldData;
@@ -297,6 +423,7 @@
       date = scene + '\n(' + date.toLocaleString(undefined, DateOptions) + ')';
       localStorage[TITLE+'_save_timestamp_' + slot] = date;
       window.populateSaveSlots(8, 2);
+      hideLoadingIndicator();
   };
 
   window.quickLoad = function() {
@@ -311,9 +438,11 @@
 
   window.loadSlot = function(slot) {
       if (localStorage[TITLE+'_save_' + slot]) {
+          showLoadingIndicator();
           var saveString = localStorage[TITLE+'_save_' + slot];
           window.dendryUI.dendryEngine.setState(JSON.parse(saveString));
           window.hideSaveSlots();
+          hideLoadingIndicator();
           // Show a subtle notification instead of alert
           showNotification("Game loaded successfully", "success");
       } else {
@@ -334,50 +463,38 @@
 
   // Enhanced notification system
   function showNotification(message, type) {
+    type = type || 'info';
     var notification = document.createElement('div');
     notification.className = 'notification notification-' + type;
     notification.textContent = message;
-    notification.style.cssText = `
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: var(--secondary-bg);
-      color: var(--text-primary);
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px var(--shadow-medium);
-      border-left: 4px solid var(--electric-blue);
-      z-index: 3000;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      font-size: 14px;
-      font-weight: 500;
-      max-width: 300px;
-    `;
     
+    // Add ARIA attributes for screen readers
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
     if (type === 'error') {
-      notification.style.borderLeftColor = '#EF4444';
-    } else if (type === 'success') {
-      notification.style.borderLeftColor = 'var(--neon-green)';
+      notification.setAttribute('aria-live', 'assertive');
     }
     
     document.body.appendChild(notification);
     
     // Animate in
     setTimeout(function() {
-      notification.style.transform = 'translateX(0)';
+      notification.classList.add('show');
     }, 10);
     
     // Animate out and remove
     setTimeout(function() {
-      notification.style.transform = 'translateX(100%)';
+      notification.classList.remove('show');
       setTimeout(function() {
         if (notification.parentNode) {
           notification.parentNode.removeChild(notification);
         }
       }, 300);
-    }, 3000);
+    }, type === 'error' ? 5000 : 3000); // Show errors longer
   }
+  
+  // Expose showNotification globally for use in other parts of the game
+  window.showNotification = showNotification;
   window.populateSaveSlots = function(max_slots, max_auto_slots) {
       // this fills in the save information
       function createLoadListener(i) {
@@ -458,6 +575,35 @@
 
   window.onload = function() {
     window.dendryUI.loadSettings();
+    
+    // Initialize accessibility features
+    setTimeout(function() {
+      updateChoiceAccessibility();
+      
+      // Add ARIA landmarks
+      var chatMain = document.querySelector('.chat-main');
+      if (chatMain) {
+        chatMain.setAttribute('role', 'main');
+        chatMain.setAttribute('aria-label', 'Game Content');
+      }
+      
+      var progressSidebar = document.getElementById('progress-sidebar');
+      if (progressSidebar) {
+        progressSidebar.setAttribute('role', 'complementary');
+        progressSidebar.setAttribute('aria-label', 'Game Status');
+      }
+      
+      var contextSidebar = document.getElementById('context-sidebar');
+      if (contextSidebar) {
+        contextSidebar.setAttribute('role', 'complementary');
+        contextSidebar.setAttribute('aria-label', 'Game Context');
+      }
+      
+      var header = document.querySelector('.sticky-header');
+      if (header) {
+        header.setAttribute('role', 'banner');
+      }
+    }, 500);
   };
 
 }());

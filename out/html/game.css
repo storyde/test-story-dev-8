@@ -3,51 +3,57 @@
 /* CSS Custom Properties - Near Future Color Palette */
 :root {
   /* Light Theme Colors - Soft Acrylic Palette */
-  --primary-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  --secondary-bg: rgba(255, 255, 255, 0.85);
-  --accent-bg: rgba(248, 250, 252, 0.9);
-  --header-bg: rgba(30, 41, 59, 0.95);
-  --sidebar-bg: rgba(255, 255, 255, 0.8);
-  --chat-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --accent-bg: #f1f5f9;
+  --header-bg: #1e293b;
+  --sidebar-bg: #ffffff;
+  --chat-bg: #f8fafc;
   
-  /* Acrylic Color Palette - Soft and Moderate */
+  /* High Contrast Color Palette */
   --accent-blue: #6366f1;
-  --soft-teal: #06b6d4;
-  --gentle-purple: #8b5cf6;
-  --nature-green: #059669;
-  --warm-amber: #d97706;
-  --rose-pink: #e11d48;
+  --soft-teal: #0891b2;
+  --gentle-purple: #7c3aed;
+  --nature-green: #047857;
+  --warm-amber: #b45309;
+  --rose-pink: #be123c;
   
-  /* Text Colors - Softer Contrast */
-  --text-primary: #374151;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
+  /* Text Colors - High Contrast */
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
   --text-light: #FFFFFF;
   
-  /* Message Colors - Acrylic Glass Effect */
-  --narrator-bg: rgba(241, 245, 249, 0.8);
+  /* Message Colors - High Contrast Solid Colors */
+  --narrator-bg: #e2e8f0;
   --narrator-border: var(--accent-blue);
-  --facilitator-bg: rgba(236, 254, 255, 0.8);
+  --facilitator-bg: #cffafe;
   --facilitator-border: var(--soft-teal);
-  --me-bg: rgba(220, 252, 231, 0.85);
+  --me-bg: #d1fae5;
   --me-border: var(--nature-green);
-  --librarian-bg: rgba(253, 242, 248, 0.8);
+  --librarian-bg: #fce7f3;
   --librarian-border: var(--rose-pink);
-  --archivist-bg: rgba(243, 232, 255, 0.8);
+  --archivist-bg: #ede9fe;
   --archivist-border: var(--gentle-purple);
-  --scholar-bg: rgba(219, 234, 254, 0.8);
+  --scholar-bg: #dbeafe;
   --scholar-border: var(--accent-blue);
-  --historian-bg: rgba(254, 243, 199, 0.8);
+  --historian-bg: #fef3c7;
   --historian-border: var(--warm-amber);
-  --curator-bg: rgba(209, 250, 229, 0.8);
+  --curator-bg: #d1fae5;
   --curator-border: var(--nature-green);
   
   /* UI Elements */
-  --border-color: rgba(226, 232, 240, 0.6);
-  --shadow-light: rgba(0, 0, 0, 0.1);
-  --shadow-medium: rgba(0, 0, 0, 0.15);
-  --shadow-heavy: rgba(0, 0, 0, 0.25);
+  --border-color: #e2e8f0;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --shadow-heavy: rgba(0, 0, 0, 0.15);
   --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  
+  /* Loading and feedback colors */
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
   
   /* Spacing */
   --space-xs: 4px;
@@ -78,39 +84,39 @@
 
 /* Dark Theme - Deep Acrylic with Glassmorphism */
 .theme-dark {
-  --primary-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --secondary-bg: rgba(30, 41, 59, 0.85);
-  --accent-bg: rgba(51, 65, 85, 0.9);
-  --header-bg: rgba(15, 23, 42, 0.95);
-  --sidebar-bg: rgba(30, 41, 59, 0.8);
-  --chat-bg: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --primary-bg: #0f172a;
+  --secondary-bg: #1e293b;
+  --accent-bg: #334155;
+  --header-bg: #0f172a;
+  --sidebar-bg: #1e293b;
+  --chat-bg: #0f172a;
   
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
   --text-light: #FFFFFF;
   
-  --narrator-bg: rgba(51, 65, 85, 0.8);
+  --narrator-bg: #475569;
   --narrator-border: var(--accent-blue);
-  --facilitator-bg: rgba(13, 79, 60, 0.8);
+  --facilitator-bg: #164e63;
   --facilitator-border: var(--soft-teal);
-  --me-bg: rgba(6, 78, 59, 0.85);
+  --me-bg: #065f46;
   --me-border: var(--nature-green);
-  --librarian-bg: rgba(131, 24, 67, 0.8);
+  --librarian-bg: #831843;
   --librarian-border: var(--rose-pink);
-  --archivist-bg: rgba(88, 28, 135, 0.8);
+  --archivist-bg: #581c87;
   --archivist-border: var(--gentle-purple);
-  --scholar-bg: rgba(30, 58, 138, 0.8);
+  --scholar-bg: #1e3a8a;
   --scholar-border: var(--accent-blue);
-  --historian-bg: rgba(69, 26, 3, 0.8);
+  --historian-bg: #451a03;
   --historian-border: var(--warm-amber);
-  --curator-bg: rgba(6, 78, 59, 0.8);
+  --curator-bg: #065f46;
   --curator-border: var(--nature-green);
   
-  --border-color: rgba(51, 65, 85, 0.6);
-  --shadow-light: rgba(0, 0, 0, 0.3);
-  --shadow-medium: rgba(0, 0, 0, 0.4);
-  --shadow-heavy: rgba(0, 0, 0, 0.6);
+  --border-color: #475569;
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-medium: rgba(0, 0, 0, 0.3);
+  --shadow-heavy: rgba(0, 0, 0, 0.4);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
@@ -126,8 +132,7 @@
 
 body {
   font-family: var(--font-family);
-  background: var(--primary-bg);
-  background-attachment: fixed;
+  background-color: var(--primary-bg);
   color: var(--text-primary);
   transition: background-color var(--transition-medium), color var(--transition-medium);
   overflow-x: hidden;
@@ -135,6 +140,7 @@ body {
   font-feature-settings: 'kern' 1, 'liga' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 /* Main Container */
@@ -350,8 +356,7 @@ body {
   margin-right: 300px;
   display: flex;
   flex-direction: column;
-  background: var(--chat-bg);
-  background-attachment: fixed;
+  background-color: var(--chat-bg);
   position: relative;
 }
 
@@ -535,7 +540,7 @@ ul.choices {
 
 ul.choices li {
   border: 2px solid var(--accent-blue);
-  background: var(--secondary-bg);
+  background-color: var(--secondary-bg);
   backdrop-filter: blur(15px);
   color: var(--accent-blue);
   padding: var(--space-md) var(--space-lg);
@@ -552,6 +557,8 @@ ul.choices li {
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ul.choices li::before {
@@ -576,19 +583,22 @@ ul.choices li:focus {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--shadow-medium);
   border-color: var(--accent-blue);
-  background: var(--accent-blue);
+  background-color: var(--accent-blue);
+  outline: none;
 }
 
 ul.choices li:active {
   transform: translateY(0);
+  transition: transform 0.1s ease;
 }
 
 ul.choices li.unavailable {
   color: var(--text-muted);
-  background: var(--accent-bg);
+  background-color: var(--accent-bg);
   border-color: var(--border-color);
   cursor: default;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 ul.choices li.unavailable::before {
@@ -596,7 +606,7 @@ ul.choices li.unavailable::before {
 }
 
 ul.choices li.unavailable:hover {
-  background: var(--accent-bg);
+  background-color: var(--accent-bg);
   color: var(--text-muted);
   transform: none;
   box-shadow: none;
@@ -942,10 +952,122 @@ p.game-over {
   margin: var(--space-md) 0;
   border-radius: var(--radius-md);
   color: var(--text-muted);
-  background: var(--accent-bg);
+  background-color: var(--accent-bg);
   backdrop-filter: blur(10px);
   text-align: center;
   animation: pulse 2s infinite;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--secondary-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--glass-shadow);
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-medium);
+}
+
+.loading-indicator.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Choice Selection Feedback */
+ul.choices li.selected {
+  background-color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
+  color: var(--text-light) !important;
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
+
+/* Enhanced Notification System */
+.notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: var(--secondary-bg);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+  border-left: 4px solid var(--info-color);
+  z-index: 3000;
+  transform: translateX(100%);
+  transition: transform var(--transition-smooth);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification-success {
+  border-left-color: var(--success-color);
+}
+
+.notification-error {
+  border-left-color: var(--error-color);
+}
+
+.notification-warning {
+  border-left-color: var(--warning-color);
+}
+
+.notification-info {
+  border-left-color: var(--info-color);
+}
+
+/* Responsive Typography */
+@media (max-width: 480px) {
+  :root {
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-md: 15px;
+    --font-size-lg: 17px;
+    --font-size-xl: 22px;
+  }
+  
+  .bubble {
+    padding: 0.6em 1em;
+    font-size: var(--font-size-sm);
+  }
+  
+  ul.choices li {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* Reduced Motion Support */
@@ -956,6 +1078,12 @@ p.game-over {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .loading-spinner {
+    animation: none;
+    border-top-color: var(--accent-blue);
   }
 }
 
@@ -973,17 +1101,22 @@ footer,
   .sticky-header,
   .sidebar,
   .choices-container,
-  .modal-overlay {
+  .modal-overlay,
+  .loading-indicator,
+  .notification {
     display: none !important;
   }
   
   .chat-main {
     width: 100% !important;
     margin: 0 !important;
+    background-color: white !important;
   }
   
   .bubble {
     box-shadow: none !important;
     border: 1px solid #000 !important;
+    background-color: white !important;
+    color: black !important;
   }
 }
