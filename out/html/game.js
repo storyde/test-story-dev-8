@@ -135,17 +135,17 @@
 
   function toggleTheme() {
     var body = document.body;
-    var themeIcon = document.querySelector('#theme-toggle span');
+    var themeIcon = document.querySelector('#theme-toggle i');
     
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      themeIcon.className = 'fas fa-moon';
+      if (themeIcon) themeIcon.className = 'fas fa-moon';
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      themeIcon.className = 'fas fa-sun';
+      if (themeIcon) themeIcon.className = 'fas fa-sun';
       currentTheme = 'light';
     }
     
@@ -156,7 +156,6 @@
   function loadTheme() {
     var savedTheme = localStorage.getItem('fullquest-theme') || 'light';
     var body = document.body;
-    var themeIcon = document.querySelector('#theme-toggle span');
     var themeIconElement = document.querySelector('#theme-toggle i');
     
     if (savedTheme === 'dark') {
