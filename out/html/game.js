@@ -200,6 +200,7 @@
   function toggleProgressSidebar() {
     var sidebar = document.getElementById('progress-sidebar');
     var overlay = document.getElementById('sidebar-overlay');
+    var chatMain = document.querySelector('.chat-main');
     var isMobile = window.innerWidth <= 768;
     
     if (isMobile) {
@@ -212,12 +213,18 @@
       }
     } else {
       sidebar.classList.toggle('hidden');
+      if (sidebar.classList.contains('hidden')) {
+        chatMain.classList.add('sidebar-left-hidden');
+      } else {
+        chatMain.classList.remove('sidebar-left-hidden');
+      }
     }
   }
 
   function toggleContextSidebar() {
     var sidebar = document.getElementById('context-sidebar');
     var overlay = document.getElementById('sidebar-overlay');
+    var chatMain = document.querySelector('.chat-main');
     var isMobile = window.innerWidth <= 768;
     
     if (isMobile) {
@@ -230,6 +237,11 @@
       }
     } else {
       sidebar.classList.toggle('hidden');
+      if (sidebar.classList.contains('hidden')) {
+        chatMain.classList.add('sidebar-right-hidden');
+      } else {
+        chatMain.classList.remove('sidebar-right-hidden');
+      }
     }
   }
 
@@ -295,6 +307,26 @@
       'Narration: ':   'na'
     };
 
+    // Character profile images from Unsplash
+    const profileImages = {
+      'cfa': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+      'cli': 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+      'car': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+      'csc': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
+      'chi': 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+      'ccu': 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face'
+    };
+
+    // Character full names for bubble headers
+    const characterNames = {
+      'cfa': 'Facilitator',
+      'cli': 'Librarian',
+      'car': 'Archivist',
+      'csc': 'Scholar',
+      'chi': 'Historian',
+      'ccu': 'Curator'
+    };
+
     for (const prefix in mapping) {
       if (text.startsWith(prefix)) {
         const cls = mapping[prefix];
@@ -316,12 +348,18 @@
             </div>`;
         }
         else {
-          // Other characters – profileabbrevation left
-          const label = prefix.trim().slice(0,2);
+          // Other characters – profile image left, name in bubble
+          const profileImg = profileImages[cls];
+          const characterName = characterNames[cls];
           return `
             <div class="chat-line">
-              <span class="profile ${cls}">${label}</span>
-              <div class="bubble ${cls}">${content}</div>
+              <span class="profile ${cls}">
+                <img src="${profileImg}" alt="${characterName}" />
+              </span>
+              <div class="bubble ${cls}">
+                <div class="bubble-sender-name">${characterName}</div>
+                ${content}
+              </div>
             </div>`;
         }
       }
