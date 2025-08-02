@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Full Quest - storyde</title>
+    
+    <!-- UIKit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="game.css">
+    
+    <!-- UIKit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+    
+    <!-- jQuery and Dendry -->
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="core.js"></script>
+    <script src="game.js"></script>
+  </head>
+  <body class="theme-light">
+    
+    <!-- Main Container -->
+    <div class="main-container">
+      
+      <!-- Sticky Header -->
+      <header class="sticky-header">
+        <div class="header-content">
+          <div class="header-left">
+            <button id="progress-toggle" class="header-btn" aria-label="Toggle Progress" tabindex="0">
+              <span uk-icon="icon: list; ratio: 1.2"></span>
+            </button>
+            <div class="game-title">
+              <h1>Full Quest</h1>
+            </div>
+          </div>
+          <div class="header-right">
+            <button id="context-toggle" class="header-btn" aria-label="Toggle Context" tabindex="0">
+              <span uk-icon="icon: info; ratio: 1.2"></span>
+            </button>
+            <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
+              <span uk-icon="icon: sun; ratio: 1.2"></span>
+            </button>
+            <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
+              <span uk-icon="icon: database; ratio: 1.2"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        
+        <!-- Left Sidebar - Progress/Status -->
+        <aside id="progress-sidebar" class="sidebar sidebar-left">
+          <div class="sidebar-header">
+            <h3>
+              <span uk-icon="icon: check; ratio: 1.1"></span>
+              Status
+            </h3>
+          </div>
+          <div class="sidebar-content">
+            <div id="qualities">
+              <!-- Dendry status content will be populated here -->
+            </div>
+          </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <main class="chat-main">
+          <div id="chat-container" class="chat-container">
+            <div id="content" class="chat-messages">
+              <!-- Dendry game content will be displayed here -->
+            </div>
+          </div>
+
+          <!-- Choices Container -->
+          <div id="choices-container" class="choices-container" style="display: none;">
+            <!-- Dendry choices will be populated here -->
+          </div>
+        </main>
+
+        <!-- Right Sidebar - Context -->
+        <aside id="context-sidebar" class="sidebar sidebar-right">
+          <div class="sidebar-header">
+            <h3>
+              <span uk-icon="icon: world; ratio: 1.1"></span>
+              Context
+            </h3>
+          </div>
+          <div class="sidebar-content">
+            <div id="holtext">
+              <!-- Dendry context content will be populated here -->
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Save/Load Modal -->
+    <div id="save" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Save & Load Game</h2>
+          <button onclick="window.hideSaveSlots();" class="modal-close">
+            <span uk-icon="icon: close"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table id="saves_table" class="saves-table">
+            <tr>
+                <td>Auto-0</td>
+                <td><button class="save-button" id="save_button_a0">Save</button></td>
+                <td><button class="delete-button" id="delete_button_a0">Delete</button></td>
+                <td class="save_info" id="save_info_a0"></td>
+            </tr>
+            <tr>
+                <td>Auto-1</td>
+                <td><button class="save-button" id="save_button_a1">Save</button></td>
+                <td><button class="delete-button" id="delete_button_a1">Delete</button></td>
+                <td class="save_info" id="save_info_a1"></td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td><button class="save-button" id="save_button_0">Save</button></td>
+                <td><button class="delete-button" id="delete_button_0">Delete</button></td>
+                <td class="save_info" id="save_info_0"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><button class="save-button" id="save_button_1">Save</button></td>
+                <td><button class="delete-button" id="delete_button_1">Delete</button></td>
+                <td class="save_info" id="save_info_1"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><button class="save-button" id="save_button_2">Save</button></td>
+                <td><button class="delete-button" id="delete_button_2">Delete</button></td>
+                <td class="save_info" id="save_info_2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><button class="save-button" id="save_button_3">Save</button></td>
+                <td><button class="delete-button" id="delete_button_3">Delete</button></td>
+                <td class="save_info" id="save_info_3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><button class="save-button" id="save_button_4">Save</button></td>
+                <td><button class="delete-button" id="delete_button_4">Delete</button></td>
+                <td class="save_info" id="save_info_4"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><button class="save-button" id="save_button_5">Save</button></td>
+                <td><button class="delete-button" id="delete_button_5">Delete</button></td>
+                <td class="save_info" id="save_info_5"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><button class="save-button" id="save_button_6">Save</button></td>
+                <td><button class="delete-button" id="delete_button_6">Delete</button></td>
+                <td class="save_info" id="save_info_6"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><button class="save-button" id="save_button_7">Save</button></td>
+                <td><button class="delete-button" id="delete_button_7">Delete</button></td>
+                <td class="save_info" id="save_info_7"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

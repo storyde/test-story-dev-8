@@ -1,0 +1,92 @@
+title: Root Scene
+new-page: true
+
+---
+
+= Welcome to Holistic Futures 
+
+In a time not so far into the future, society grapples with the symptoms of the polycrisis—a complex web of social, economic, and environmental challenges. Streets crack under inequality. Climate trembles. Trust fades.
+
+---
+
+You—an explorer by nature, or perhaps just someone who got curious one day—arrive in the middle of it all. A solar-charged wristpad beeps. The air smells like static and regret.
+
+This is the root scene. The root scene is normally used
+as a hub: the choices allow you to go to different sections of your
+story. In shorter works it may just function as the first scene in the
+game, sending the player off into the tree of choices. If the root
+scene doesn't have any choices that it can display, the game is over.
+
+Narration: The group gathers around the virtual roundtable.
+
+Facilitator: Welcome everyone, glad you could make it.
+
+Me: Hi all! Looking forward to today's session.
+
+Librarian: I can provide resources if needed.
+
+Archivist: I have access to ancient documents.
+
+Scholar: Shall we begin with the first topic? a 
+
+hub: the choices allow you to go to different sections of your
+story. In shorter works it may just function as the first scene in the
+game, sending the player off into
+
+Historian: I can give some historical context.
+
+Curator: And I have curated some visuals to share.
+
+You first encountered her while you were attempting to prepare for a beauty pageant that your parents signed you up for in the junior year of high school. She was at the first meeting for the pageant, not as a contestant but as part of a social experiment. Or something like that. She offered to help you prepare; she was much more amenable to such things. Thus, the two of you became steadily acquainted.
+
+Emily's parents were also part of your parents' circle. Emily's dad, Song Chen, was several levels of academic hierarchy above your mom at their university department. You used to see her at parties much like this one, but not once since high school, until today.
+
+By the way, she's trans. And you don't even know if she's out yet.
+
+- @emily_date: I liked her, and she said that we could date after she goes to college, but nothing came of that.
+
+@emily_date
+
+You, well, you *like* liked her. As usual, you never understood why; just some ineffable, irrational feeling deep within you. Well, she was very smart and talented and beautiful. And a kind person once you got past the initial awkwardness. And apparently, she liked you back enough, but wasn't so sure about dating back then, with the whole "trans and not out as a woman" thing.
+
+You made a contract with her, or something
+
+# choices
+- @second_choice: the second choice
+- @third_choice: the third choice
+
+@third_choice
+new-page: false
+
+lets put the third choice here
+there is no more text here
+
+- @stats: Init
+
+#- @grace: Grace
+#- @jenny: Jenny
+#- @rachel: Rachel
+#- @sarah: Sarah
+#- @stephanie: Stephanie
+
+@stats
+title: Stats
+new-page: true
+is-special: true
+go-to: init 
+
+# choices
+- #market
+
+@second_choice
+title: second
+new-page: true
+tags: market
+
+The market is a lively spot where things are bought and sold. 
+Colorful tents line the space with goods like food, clothes, and 
+treasures. People talk and trade, making the place bustling 
+with activity.
+
+# choices
+- #harbour: Visit the Harbour Master's Hut

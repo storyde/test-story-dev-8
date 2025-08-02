@@ -1,0 +1,19 @@
+title: init stats
+on-arrival: time = 0; courage = 8; energy = 10; despair = 5; minus_despair = 0; hunger = 10; thirst = 10; initialized = 1; 
+new-page: false
+
+= Test story
+
+
+- @start_game: Start game
+- @go_to_credits: Credits
+
+@start_game
+subtitle: Should leat to root
+go-to: root
+
+@go_to_credits
+subtitle: View credits and inspirations
+go-to: credits
+
+# this scene just initializes all stats

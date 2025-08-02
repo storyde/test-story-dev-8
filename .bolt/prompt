@@ -1,0 +1,156 @@
+This project is written using the Dendry Framework. 
+This is the foundation of an interactive chat-like game with many branches and choices, so the player can choose his own answers. 
+The main focus is on a facilitation session on the Holistic Management Framework  in a chat like style, in which the player develops his holistic context. The player will be guided by the questions of the facilitator. The player can also learn some background information in side-conversations or side-branches.
+This game will help users to experience and apply Holistic Management in an entertaining way.
+
+The process is similar to a choose-your-own-adventure game, in which the user is asked a question and is being offered several possible answers. 
+
+The story should be engaging and interesting for a broad audience and should branch in a meaningful way. The setting is in the near future.
+
+Narration should be kept to a minimum. Instead, there should be direct speech with other characters in the game and by the facilitator, and meaningful options for the player to choose from. 
+
+If neccessary, break the story in multiple scene files (.dry) using Dendry syntax and write one by one. Make use of the tag system offered by Dendry. 
+
+Use the correct words that are used in Holistic Management. 
+Don't mention Allan Savory. 
+Don't Mention the part about cows and grazing from the holistic planned grazing framework.
+
+Check the game storylets for correct Dendry syntax. 
+
+Make sure that each .scene.dry file starts with a Title:
+
+title: string
+
+It can then have the following information: 
+
+subtitle: string 
+
+unavailable-subtitle: string
+
+view-if: boolean expression
+
+choose-if: boolean expression
+
+on-arrival: semicolon-separated list of commands
+
+on-departure: semicolon-separated list of commands
+
+go-to: name of scene, or semicolon-separated list of the format ‘scene1 if <condition>’
+
+tags: comma-separated list of tags
+
+The “tags” line in particular can be important.
+
+It is also important, how blank lines, the choices and the @scenes are handled:
+
+- @scene: 
+
+is a choice and can be followed by a title in the same line and another choice in the next line.
+
+But:
+
+@scene 
+
+without the dash is a scenename and must be followed by options in the next line like "subtitle: string" or by a blank line and then the scene content.
+
+### A short Dendry syntax reference:
+
+All of these are elements that can be used in the body text.
+
+```    *some words* - emphasis
+
+    **some words** - strong emphasis
+
+    > paragraph - quotation
+
+    >> paragraph - attribution
+
+    = paragraph - heading
+
+    // + <newline> - manual line break
+
+    <blank line> - paragraph break
+
+    --- - horizontal rule / break
+
+    [some words] - hidable section
+
+    [+ foo : bar +] - insert quality value with optional qdisplay
+
+    [? if condition: text ?] - conditional display of text
+
+    {!<span class="foo">aaa</span>!} - raw html
+
+    #comment - comment
+
+```
+
+### Examples
+
+Displaying variables in text: [+ var +]
+
+Varying text based on a condition: [? if var = 1 : something ?]
+
+Basic scene example:
+
+```title: scene0
+
+go-to: scene1
+
+# this is the start of the .scene.dry file.
+
+@scene1
+
+title: Scene
+
+subtitle: subtitle of the scene
+
+unavailable-subtitle: scene cannot be selected
+
+view-if: var1 = 1 and (var2 = 2 or var3 = 3)
+
+choose-if: var4 = 4
+
+on-arrival: v2 = 1; v3 = 3; vs = "abc"
+
+tags: start, tag1, tag2
+
+new-page: true
+
+max-visits: 2
+
+Content goes here.
+
+var1: [+ var1 +]
+
+vs: [+ vs +]
+
+[? if var1 = 1 : aaaaa ?]
+
+# these are links
+
+- @scene2: Choice 1
+
+- @scene3: Choice 2
+
+@scene2
+
+Content for scene2 goes here.
+
+@scene3
+
+Content for scene3 goes here.
+
+```
+
+Including javascript in on-arrival: {! Q['var1'] = Math.cos(Math.PI/4); !}
+
+Including javascript in view-if: {! return ((Q['a'] || 0)===(Q['b'] || 0)); !}
+
+
+Start each new narrative paragraph with 
+Narration:
+and each direct speech with the character's name, such as 
+Facilitator: or 
+Me: 
+as this syntax will be used by a startWith: function to style the chat interface.

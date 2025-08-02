@@ -1,0 +1,11 @@
+title: Context
+
+# this scene contains information for the sidebar.
+
+= Context
+
+This is the context bar. The context will be displayed here.
+
+stories fill the air as people eat, drink, and have a good time.
+
+You are [+ hunger : qhunger +].
