@@ -110,13 +110,14 @@
       if (!button.getAttribute('aria-label')) {
         var icon = button.querySelector('i');
         if (icon) {
-          if (icon.classList.contains('fa-chart-line')) {
+          var iconType = icon.getAttribute('data-lucide');
+          if (iconType === 'bar-chart-3') {
             button.setAttribute('aria-label', 'Toggle Status Panel');
-          } else if (icon.classList.contains('fa-globe-americas')) {
+          } else if (iconType === 'compass') {
             button.setAttribute('aria-label', 'Toggle Context Panel');
-          } else if (icon.classList.contains('fa-sun') || icon.classList.contains('fa-moon')) {
+          } else if (iconType === 'sun' || iconType === 'moon') {
             button.setAttribute('aria-label', 'Toggle Theme');
-          } else if (icon.classList.contains('fa-save')) {
+          } else if (iconType === 'save') {
             button.setAttribute('aria-label', 'Save and Load Game');
           }
         }
@@ -345,12 +346,18 @@
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIcon) themeIcon.className = 'fas fa-sun';
+      if (themeIcon) {
+        themeIcon.setAttribute('data-lucide', 'sun');
+        lucide.createIcons();
+      }
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIcon) themeIcon.className = 'fas fa-moon';
+      if (themeIcon) {
+        themeIcon.setAttribute('data-lucide', 'moon');
+        lucide.createIcons();
+      }
       currentTheme = 'light';
     }
     
@@ -366,12 +373,18 @@
     if (savedTheme === 'dark') {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIconElement) themeIconElement.className = 'fas fa-sun';
+      if (themeIconElement) {
+        themeIconElement.setAttribute('data-lucide', 'sun');
+        lucide.createIcons();
+      }
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIconElement) themeIconElement.className = 'fas fa-moon';
+      if (themeIconElement) {
+        themeIconElement.setAttribute('data-lucide', 'moon');
+        lucide.createIcons();
+      }
       currentTheme = 'light';
     }
   }
@@ -696,6 +709,11 @@
 
   window.onload = function() {
     window.dendryUI.loadSettings();
+    
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
     
     // Initialize accessibility features
     setTimeout(function() {

@@ -10,8 +10,8 @@
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
     
-    <!-- Font Awesome for better icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Lucide Icons - Modern, clean icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="game.css">
@@ -35,7 +35,7 @@
         <div class="header-content">
           <div class="header-left">
             <button id="progress-toggle" class="header-btn" aria-label="Toggle Progress" tabindex="0">
-              <i class="fas fa-chart-line"></i>
+              <i data-lucide="bar-chart-3"></i>
               <span class="sr-only">Toggle Status Panel</span>
             </button>
             <div class="game-title">
@@ -44,15 +44,15 @@
           </div>
           <div class="header-right">
             <button id="context-toggle" class="header-btn" aria-label="Toggle Context" tabindex="0">
-              <i class="fas fa-globe-americas"></i>
+              <i data-lucide="compass"></i>
               <span class="sr-only">Toggle Context Panel</span>
             </button>
             <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
-              <i class="fas fa-moon"></i>
+              <i data-lucide="moon"></i>
               <span class="sr-only">Toggle Theme</span>
             </button>
             <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
-              <i class="fas fa-save"></i>
+              <i data-lucide="save"></i>
               <span class="sr-only">Save and Load Game</span>
             </button>
           </div>
@@ -66,7 +66,7 @@
         <aside id="progress-sidebar" class="sidebar sidebar-left">
           <div class="sidebar-header">
             <h3>
-              <i class="fas fa-tasks"></i>
+              <i data-lucide="list-checks"></i>
               Status
             </h3>
           </div>
@@ -95,7 +95,7 @@
         <aside id="context-sidebar" class="sidebar sidebar-right">
           <div class="sidebar-header">
             <h3>
-              <i class="fas fa-compass"></i>
+              <i data-lucide="map"></i>
               Context
             </h3>
           </div>
@@ -118,7 +118,7 @@
         <div class="modal-header">
           <h2 id="save-modal-title">Save & Load Game</h2>
           <button onclick="window.hideSaveSlots();" class="modal-close" aria-label="Close Save Dialog">
-            <i class="fas fa-times"></i>
+            <i data-lucide="x"></i>
           </button>
         </div>
         <div class="modal-body">
