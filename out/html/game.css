@@ -422,27 +422,27 @@ body {
 }
 
 /* Character name colors */
-.bubble-sender-name.facilitator {
+.bubble-sender-name.cfa {
   color: #2563eb; /* Blue */
 }
 
-.bubble-sender-name.librarian {
+.bubble-sender-name.cli {
   color: #7c3aed; /* Purple */
 }
 
-.bubble-sender-name.archivist {
+.bubble-sender-name.car {
   color: #dc2626; /* Red */
 }
 
-.bubble-sender-name.scholar {
+.bubble-sender-name.csc {
   color: #059669; /* Green */
 }
 
-.bubble-sender-name.historian {
+.bubble-sender-name.chi {
   color: #d97706; /* Orange */
 }
 
-.bubble-sender-name.curator {
+.bubble-sender-name.ccu {
   color: #be185d; /* Pink */
 }
 

@@ -434,14 +434,13 @@
           // Other characters – profile image left, name in bubble
           const profileImg = profileImages[cls];
           const characterName = characterNames[cls];
-          const characterClass = cls.substring(1); // Remove 'c' prefix for class name
           return `
             <div class="chat-line">
               <span class="profile ${cls}">
                 <img src="${profileImg}" alt="${characterName}" />
               </span>
               <div class="bubble ${cls}">
-                <div class="bubble-sender-name ${characterClass}">${characterName}</div>
+                <div class="bubble-sender-name ${cls}">${characterName}</div>
                 ${content}
               </div>
             </div>`;
