@@ -738,6 +738,11 @@ blockquote.attribution {
   transition: all var(--transition-fast);
 }
 
+.modal-close i {
+  font-size: 1.3em !important;
+  display: inline-block;
+}
+
 .modal-close:hover {
   background: var(--hover-bg);
   color: var(--text-primary);
