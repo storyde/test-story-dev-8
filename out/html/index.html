@@ -7,11 +7,11 @@
     <meta name="theme-color" content="#1e293b">
     <title>Full Quest - storyde</title>
     
+    <!-- Phosphor Icons - Modern, lightweight icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.0.3/src/regular/style.css">
+    
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
-    
-    <!-- Lucide Icons - Modern, clean icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="game.css">
@@ -35,7 +35,7 @@
         <div class="header-content">
           <div class="header-left">
             <button id="progress-toggle" class="header-btn" aria-label="Toggle Progress" tabindex="0">
-              <i data-lucide="bar-chart-3"></i>
+              <i class="ph ph-chart-bar"></i>
               <span class="sr-only">Toggle Status Panel</span>
             </button>
             <div class="game-title">
@@ -44,15 +44,15 @@
           </div>
           <div class="header-right">
             <button id="context-toggle" class="header-btn" aria-label="Toggle Context" tabindex="0">
-              <i data-lucide="compass"></i>
+              <i class="ph ph-compass"></i>
               <span class="sr-only">Toggle Context Panel</span>
             </button>
             <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
-              <i data-lucide="moon"></i>
+              <i class="ph ph-moon"></i>
               <span class="sr-only">Toggle Theme</span>
             </button>
             <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
-              <i data-lucide="save"></i>
+              <i class="ph ph-floppy-disk"></i>
               <span class="sr-only">Save and Load Game</span>
             </button>
           </div>
@@ -66,7 +66,7 @@
         <aside id="progress-sidebar" class="sidebar sidebar-left">
           <div class="sidebar-header">
             <h3>
-              <i data-lucide="list-checks"></i>
+              <i class="ph ph-list-checks"></i>
               Status
             </h3>
           </div>
@@ -95,7 +95,7 @@
         <aside id="context-sidebar" class="sidebar sidebar-right">
           <div class="sidebar-header">
             <h3>
-              <i data-lucide="map"></i>
+              <i class="ph ph-map-pin"></i>
               Context
             </h3>
           </div>
@@ -118,7 +118,7 @@
         <div class="modal-header">
           <h2 id="save-modal-title">Save & Load Game</h2>
           <button onclick="window.hideSaveSlots();" class="modal-close" aria-label="Close Save Dialog">
-            <i data-lucide="x"></i>
+            <i class="ph ph-x"></i>
           </button>
         </div>
         <div class="modal-body">

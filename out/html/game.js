@@ -22,6 +22,9 @@
     
     // Load saved theme
     loadTheme();
+    
+    // Initialize scroll effects
+    initializeScrollEffects();
   };
 
   function initializeInterface() {
@@ -57,6 +60,41 @@
     
     // Add choice selection feedback
     addChoiceSelectionFeedback();
+    
+    // Wrap choices in container for max-width
+    wrapChoicesContainer();
+  }
+  
+  function wrapChoicesContainer() {
+    var choicesContainer = document.querySelector('.choices-container');
+    if (choicesContainer) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'choices-wrapper';
+      
+      // Move all children to wrapper
+      while (choicesContainer.firstChild) {
+        wrapper.appendChild(choicesContainer.firstChild);
+      }
+      
+      choicesContainer.appendChild(wrapper);
+    }
+  }
+  
+  function initializeScrollEffects() {
+    var header = document.querySelector('.sticky-header');
+    var lastScrollTop = 0;
+    
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      lastScrollTop = scrollTop;
+    }, { passive: true });
   }
 
   function createLoadingIndicator() {
@@ -110,14 +148,14 @@
       if (!button.getAttribute('aria-label')) {
         var icon = button.querySelector('i');
         if (icon) {
-          var iconType = icon.getAttribute('data-lucide');
-          if (iconType === 'bar-chart-3') {
+          var iconClasses = icon.className;
+          if (iconClasses.includes('ph-chart-bar')) {
             button.setAttribute('aria-label', 'Toggle Status Panel');
-          } else if (iconType === 'compass') {
+          } else if (iconClasses.includes('ph-compass')) {
             button.setAttribute('aria-label', 'Toggle Context Panel');
-          } else if (iconType === 'sun' || iconType === 'moon') {
+          } else if (iconClasses.includes('ph-sun') || iconClasses.includes('ph-moon')) {
             button.setAttribute('aria-label', 'Toggle Theme');
-          } else if (iconType === 'save') {
+          } else if (iconClasses.includes('ph-floppy-disk')) {
             button.setAttribute('aria-label', 'Save and Load Game');
           }
         }
@@ -347,16 +385,14 @@
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
       if (themeIcon) {
-        themeIcon.setAttribute('data-lucide', 'sun');
-        lucide.createIcons();
+        themeIcon.className = 'ph ph-sun';
       }
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
       if (themeIcon) {
-        themeIcon.setAttribute('data-lucide', 'moon');
-        lucide.createIcons();
+        themeIcon.className = 'ph ph-moon';
       }
       currentTheme = 'light';
     }
@@ -374,16 +410,14 @@
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
       if (themeIconElement) {
-        themeIconElement.setAttribute('data-lucide', 'sun');
-        lucide.createIcons();
+        themeIconElement.className = 'ph ph-sun';
       }
       currentTheme = 'dark';
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
       if (themeIconElement) {
-        themeIconElement.setAttribute('data-lucide', 'moon');
-        lucide.createIcons();
+        themeIconElement.className = 'ph ph-moon';
       }
       currentTheme = 'light';
     }
@@ -709,11 +743,6 @@
 
   window.onload = function() {
     window.dendryUI.loadSettings();
-    
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-    }
     
     // Initialize accessibility features
     setTimeout(function() {
