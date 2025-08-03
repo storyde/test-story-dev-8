@@ -89,7 +89,7 @@
   --sidebar-bg: #2c3e50;
   --chat-bg: #1a1d23;
   
-  --text-primary: #f8f9fa;
+  --text-primary: #ffffff;
   --text-secondary: #bdc3c7;
   --text-muted: #7f8c8d;
   --text-light: #ffffff;
@@ -155,7 +155,7 @@ body {
 }
 
 .theme-dark .sticky-header.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
 .header-content {
@@ -258,11 +258,11 @@ body {
 }
 
 .theme-dark .sidebar {
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 12px rgba(255, 255, 255, 0.1);
 }
 
 .theme-dark .sidebar-left {
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 0 12px rgba(255, 255, 255, 0.15);
 }
 
 .sidebar-left {
@@ -277,7 +277,7 @@ body {
 }
 
 .theme-dark .sidebar-right {
-  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.4);
+  box-shadow: -2px 0 12px rgba(255, 255, 255, 0.15);
 }
 
 .sidebar-header {
@@ -706,7 +706,7 @@ blockquote.attribution {
 }
 
 .theme-dark .modal-content {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }
 
 .modal-header {
