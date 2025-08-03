@@ -74,6 +74,12 @@
             <div id="qualities" role="region" aria-label="Game Status Information">
               <!-- Dendry status content will be populated here -->
             </div>
+            <div class="sidebar-actions">
+              <button class="sidebar-btn" onclick="window.showSaveSlots();" aria-label="Save/Load Game" tabindex="0">
+                <i class="ph ph-floppy-disk"></i>
+                <span class="sr-only">Save/Load Game</span>
+              </button>
+            </div>
           </div>
         </aside>
 
@@ -90,19 +96,8 @@
             <!-- Dendry choices will be populated here -->
           </div>
 
-          <!-- Footer Area -->
-          <footer class="game-footer">
-            <div class="footer-content">
-              <button id="footer-save-btn" class="footer-btn" onclick="window.showSaveSlots();" aria-label="Save/Load Game" tabindex="0">
-                <i class="ph ph-floppy-disk"></i>
-                <span>Save/Load</span>
-              </button>
-              <button id="footer-theme-btn" class="footer-btn" aria-label="Toggle Theme" tabindex="0">
-                <i class="ph ph-moon"></i>
-                <span>Theme</span>
-              </button>
-            </div>
-          </footer>
+          <!-- Bottom Spacer -->
+          <div class="bottom-spacer"></div>
         </main>
 
         <!-- Right Sidebar - Context -->
@@ -116,6 +111,12 @@
           <div class="sidebar-content">
             <div id="holtext" role="region" aria-label="Game Context Information">
               <!-- Dendry context content will be populated here -->
+            </div>
+            <div class="sidebar-actions">
+              <button id="sidebar-theme-toggle" class="sidebar-btn" aria-label="Toggle Theme" tabindex="0">
+                <i class="ph ph-moon"></i>
+                <span class="sr-only">Toggle Theme</span>
+              </button>
             </div>
           </div>
         </aside>

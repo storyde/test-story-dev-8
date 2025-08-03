@@ -32,7 +32,7 @@
     document.getElementById('progress-toggle').addEventListener('click', toggleProgressSidebar);
     document.getElementById('context-toggle').addEventListener('click', toggleContextSidebar);
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-    document.getElementById('footer-theme-btn').addEventListener('click', toggleTheme);
+    document.getElementById('sidebar-theme-toggle').addEventListener('click', toggleTheme);
 
     // Initialize sidebar overlay
     var overlay = document.getElementById('sidebar-overlay');
@@ -381,7 +381,7 @@
   function toggleTheme() {
     var body = document.body;
     var themeIcon = document.querySelector('#theme-toggle i');
-    var footerThemeIcon = document.querySelector('#footer-theme-btn i');
+    var sidebarThemeIcon = document.querySelector('#sidebar-theme-toggle i');
     
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
@@ -389,8 +389,8 @@
       if (themeIcon) {
         themeIcon.className = 'ph ph-sun';
       }
-      if (footerThemeIcon) {
-        footerThemeIcon.className = 'ph ph-sun';
+      if (sidebarThemeIcon) {
+        sidebarThemeIcon.className = 'ph ph-sun';
       }
       currentTheme = 'dark';
     } else {
@@ -399,8 +399,8 @@
       if (themeIcon) {
         themeIcon.className = 'ph ph-moon';
       }
-      if (footerThemeIcon) {
-        footerThemeIcon.className = 'ph ph-moon';
+      if (sidebarThemeIcon) {
+        sidebarThemeIcon.className = 'ph ph-moon';
       }
       currentTheme = 'light';
     }
@@ -413,7 +413,7 @@
     var savedTheme = localStorage.getItem('fullquest-theme') || 'light';
     var body = document.body;
     var themeIconElement = document.querySelector('#theme-toggle i');
-    var footerThemeIconElement = document.querySelector('#footer-theme-btn i');
+    var sidebarThemeIconElement = document.querySelector('#sidebar-theme-toggle i');
     
     if (savedTheme === 'dark') {
       body.classList.remove('theme-light');
@@ -421,8 +421,8 @@
       if (themeIconElement) {
         themeIconElement.className = 'ph ph-sun';
       }
-      if (footerThemeIconElement) {
-        footerThemeIconElement.className = 'ph ph-sun';
+      if (sidebarThemeIconElement) {
+        sidebarThemeIconElement.className = 'ph ph-sun';
       }
       currentTheme = 'dark';
     } else {
@@ -431,8 +431,8 @@
       if (themeIconElement) {
         themeIconElement.className = 'ph ph-moon';
       }
-      if (footerThemeIconElement) {
-        footerThemeIconElement.className = 'ph ph-moon';
+      if (sidebarThemeIconElement) {
+        sidebarThemeIconElement.className = 'ph ph-moon';
       }
       currentTheme = 'light';
     }

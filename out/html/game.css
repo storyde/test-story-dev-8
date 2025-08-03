@@ -373,6 +373,49 @@ body {
   color: var(--text-primary);
 }
 
+/* Sidebar Actions */
+.sidebar-actions {
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-btn {
+  background: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.sidebar-btn i {
+  font-size: 1.4em !important;
+  display: inline-block;
+}
+
+.sidebar-btn:hover,
+.sidebar-btn:focus {
+  background: var(--hover-bg);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  outline: none;
+  transform: scale(1.05);
+}
+
+.sidebar-btn:active {
+  transform: scale(0.95);
+  background: var(--active-bg);
+}
+
 /* Chat Main Area */
 .chat-main {
   flex: 1;
@@ -616,68 +659,10 @@ ul.choices li div.subtitle {
   text-align: center;
 }
 
-/* Game Footer */
-.game-footer {
-  background: var(--secondary-bg);
-  border-top: 1px solid var(--border-color);
-  padding: var(--space-lg);
-  margin-top: auto;
-  padding-bottom: calc(var(--space-lg) + 60px); /* Extra space for mobile */
-}
-
-.footer-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-lg);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.footer-btn {
-  background: var(--primary-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  min-height: 48px;
-  min-width: 120px;
-  justify-content: center;
-}
-
-.footer-btn i {
-  font-size: 1.2em !important;
-  display: inline-block;
-}
-
-.footer-btn:hover,
-.footer-btn:focus {
-  background: var(--hover-bg);
-  border-color: var(--accent-blue);
-  transform: translateY(-2px);
-  outline: none;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
-}
-
-.footer-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.1);
-}
-
-.theme-dark .footer-btn:hover,
-.theme-dark .footer-btn:focus {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
-
-.theme-dark .footer-btn:active {
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+/* Bottom Spacer */
+.bottom-spacer {
+  height: 80px;
+  flex-shrink: 0;
 }
 
 /* Dendry Content Styling */
@@ -915,13 +900,8 @@ blockquote.attribution {
     padding-bottom: calc(var(--space-md) + 80px); /* More space on mobile */
   }
   
-  .footer-content {
-    gap: var(--space-md);
-  }
-  
-  .footer-btn {
-    min-width: 100px;
-    padding: var(--space-sm) var(--space-md);
+  .bottom-spacer {
+    height: 60px;
   }
   
   .header-content {
