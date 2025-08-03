@@ -217,8 +217,9 @@ body {
 }
 
 .header-btn i {
-  font-size: 1.4em;
+  font-size: 1.4em !important;
   transition: transform var(--transition-fast);
+  display: inline-block;
 }
 
 .header-btn:hover,
@@ -298,8 +299,9 @@ body {
 }
 
 .sidebar-header i {
-  font-size: 1.3em;
+  font-size: 1.2em !important;
   color: var(--accent-blue);
+  display: inline-block;
 }
 
 .sidebar-content {
@@ -640,6 +642,7 @@ ul.choices li div.subtitle {
   margin: 0 0 var(--space-md) 0;
   text-indent: 0;
   line-height: 1.6;
+  color: var(--text-primary);
 }
 
 blockquote {
