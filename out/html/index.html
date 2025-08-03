@@ -47,14 +47,6 @@
               <i class="ph ph-compass"></i>
               <span class="sr-only">Toggle Context Panel</span>
             </button>
-            <button id="theme-toggle" class="header-btn" aria-label="Toggle Theme" tabindex="0">
-              <i class="ph ph-moon"></i>
-              <span class="sr-only">Toggle Theme</span>
-            </button>
-            <button class="header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load" tabindex="0">
-              <i class="ph ph-floppy-disk"></i>
-              <span class="sr-only">Save and Load Game</span>
-            </button>
           </div>
         </div>
       </header>
@@ -69,16 +61,14 @@
               <i class="ph ph-list-checks"></i>
               Status
             </h3>
+            <button class="sidebar-header-btn" onclick="window.showSaveSlots();" aria-label="Save/Load Game" tabindex="0">
+              <i class="ph ph-floppy-disk"></i>
+              <span class="sr-only">Save/Load Game</span>
+            </button>
           </div>
           <div class="sidebar-content">
             <div id="qualities" role="region" aria-label="Game Status Information">
               <!-- Dendry status content will be populated here -->
-            </div>
-            <div class="sidebar-actions">
-              <button class="sidebar-btn" onclick="window.showSaveSlots();" aria-label="Save/Load Game" tabindex="0">
-                <i class="ph ph-floppy-disk"></i>
-                <span class="sr-only">Save/Load Game</span>
-              </button>
             </div>
           </div>
         </aside>
@@ -107,16 +97,14 @@
               <i class="ph ph-map-pin"></i>
               Context
             </h3>
+            <button id="sidebar-theme-toggle" class="sidebar-header-btn" aria-label="Toggle Theme" tabindex="0">
+              <i class="ph ph-moon"></i>
+              <span class="sr-only">Toggle Theme</span>
+            </button>
           </div>
           <div class="sidebar-content">
             <div id="holtext" role="region" aria-label="Game Context Information">
               <!-- Dendry context content will be populated here -->
-            </div>
-            <div class="sidebar-actions">
-              <button id="sidebar-theme-toggle" class="sidebar-btn" aria-label="Toggle Theme" tabindex="0">
-                <i class="ph ph-moon"></i>
-                <span class="sr-only">Toggle Theme</span>
-              </button>
             </div>
           </div>
         </aside>

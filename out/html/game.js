@@ -31,7 +31,6 @@
     // Initialize sidebar toggles
     document.getElementById('progress-toggle').addEventListener('click', toggleProgressSidebar);
     document.getElementById('context-toggle').addEventListener('click', toggleContextSidebar);
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     document.getElementById('sidebar-theme-toggle').addEventListener('click', toggleTheme);
 
     // Initialize sidebar overlay
@@ -380,15 +379,11 @@
 
   function toggleTheme() {
     var body = document.body;
-    var themeIcon = document.querySelector('#theme-toggle i');
     var sidebarThemeIcon = document.querySelector('#sidebar-theme-toggle i');
     
     if (body.classList.contains('theme-light')) {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIcon) {
-        themeIcon.className = 'ph ph-sun';
-      }
       if (sidebarThemeIcon) {
         sidebarThemeIcon.className = 'ph ph-sun';
       }
@@ -396,9 +391,6 @@
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIcon) {
-        themeIcon.className = 'ph ph-moon';
-      }
       if (sidebarThemeIcon) {
         sidebarThemeIcon.className = 'ph ph-moon';
       }
@@ -412,15 +404,11 @@
   function loadTheme() {
     var savedTheme = localStorage.getItem('fullquest-theme') || 'light';
     var body = document.body;
-    var themeIconElement = document.querySelector('#theme-toggle i');
     var sidebarThemeIconElement = document.querySelector('#sidebar-theme-toggle i');
     
     if (savedTheme === 'dark') {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
-      if (themeIconElement) {
-        themeIconElement.className = 'ph ph-sun';
-      }
       if (sidebarThemeIconElement) {
         sidebarThemeIconElement.className = 'ph ph-sun';
       }
@@ -428,9 +416,6 @@
     } else {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
-      if (themeIconElement) {
-        themeIconElement.className = 'ph ph-moon';
-      }
       if (sidebarThemeIconElement) {
         sidebarThemeIconElement.className = 'ph ph-moon';
       }
